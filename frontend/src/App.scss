@@ -1,4 +1,5 @@
 @import url(./bootstrap-4.0.0-dist/css/bootstrap.min.css);
+
 :root {
   --app-color: #9ead5f;
   --button-color: #ffa825;
@@ -35,7 +36,6 @@ body,
 }
 
 .button:hover {
-  background-color: var(--button-color-selected);
-  cursor: pointer;
+    background-color: var(--button-color-selected);
+    cursor: pointer;
 }
-/*# sourceMappingURL=App.css.map */

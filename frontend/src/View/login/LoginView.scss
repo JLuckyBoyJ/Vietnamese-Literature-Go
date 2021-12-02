@@ -1,0 +1,84 @@
+@import url(../../App.css);
+
+.login-view {
+  height: 100%;
+  display: flex;
+
+  .background-image-field {
+    flex: 5;
+    background-image: url(./login_image.svg);
+    background-size: cover;
+  }
+
+  .login-field {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .app-logo {
+      font-size: 2.5rem;
+      font-weight: 700;
+
+      .logo-light {
+        font-size: 2.5rem;
+        color: var(--app-color);
+      }
+    }
+
+    .app-slogan {
+      font-size: 1.6rem;
+    }
+
+    .login-box {
+      width: 400px;
+      height: fit-content;
+      margin: 2.2rem;
+      padding: 1rem 1.5rem;
+      background-color: var(--app-color);
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+
+      input {
+        margin-top: 15px;
+        line-height: 38px;
+        border: 0px;
+        padding: 0px 10px;
+        border-radius: 7px;
+      }
+
+      .button {
+        width: 100%;
+        height: 35px;
+        margin-top: 25px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 35px;
+        border-radius: 7px;
+      }
+
+      .button:hover {
+        background-color: var(--button-color-selected);
+        cursor: pointer;
+      }
+
+      .more-option {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+
+        div{
+            color: white;
+            text-decoration: underline;
+        }
+
+        div:hover {
+            color: whitesmoke;
+            cursor: pointer;
+        }
+      }
+    }
+  }
+}
