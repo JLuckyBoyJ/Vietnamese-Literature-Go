@@ -1,0 +1,15 @@
+.Home {
+  display: flex;
+  .left {
+    width: 50%;
+    background-color: aqua;
+
+  }
+  .right {
+    width: 50%;
+    background-color: red;
+  }
+  button {
+    background-color: gold;
+  }
+}

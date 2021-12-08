@@ -3,7 +3,6 @@
 .login-view {
   height: 100%;
   display: flex;
-
   .background-image-field {
     flex: 5;
     background-image: url(./login_image.svg);
@@ -79,6 +78,7 @@
             cursor: pointer;
         }
       }
+
     }
   }
 }
