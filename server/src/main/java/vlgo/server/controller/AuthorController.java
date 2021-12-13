@@ -2,12 +2,8 @@ package vlgo.server.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -61,34 +57,13 @@ public class AuthorController {
     public ResponseListForm<AuthorDao> getAuthor(@RequestParam(required = false) String name){
         List<AuthorDao> authors;
         if (name != null) {
-            List<AuthorDao> authorByName = authorRepository.findByName(name);
-            List<AuthorDao> authorByPenName = authorRepository.findByPenName(name);
-
-            authors = combineList(authorByName, authorByPenName);
+            List<AuthorDao> authorByName = authorRepository.findAuthorContainingName(name);
+            authors = authorByName;
         } else {
             authors = authorRepository.findAll();
         }
 
         return new ResponseListForm<>(1, "Success!!!", authors);
-    }
-
-    //Combine two array and remove duplicate
-    private List<AuthorDao> combineList(List<AuthorDao> authorByName, List<AuthorDao> authorByPenName){
-        Map<Long, Boolean> map = new HashMap<>();
-        List<AuthorDao> combinedList = new ArrayList<>();
-        for (AuthorDao authorDao: authorByName) {
-            combinedList.add(authorDao);
-            map.put(authorDao.getId(), true);
-        }
-
-        for (AuthorDao authorDao: authorByPenName) {
-            if (!map.containsKey(authorDao.getId())) {
-                combinedList.add(authorDao);
-            }
-        }
-
-        Collections.sort(combinedList, (s1, s2) -> (s1.getId() < s2.getId()) ? 1 : -1);
-        return combinedList;
     }
 
 }
