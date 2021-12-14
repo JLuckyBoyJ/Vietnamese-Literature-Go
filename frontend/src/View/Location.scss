@@ -1,0 +1,25 @@
+.Location {
+  .Intro {
+    display: flex;
+    margin-bottom: 4px;
+    .left {
+      flex: 3;
+      display: flex;
+      align-self: center;
+    }
+    .right {
+      flex: 8;
+      display: flex;
+      align-self: center;
+    }
+  }
+  .main {
+  display: flex;
+    .left {
+      flex: 3;
+    }
+    .right {
+      flex: 8;
+    }
+  }
+}
