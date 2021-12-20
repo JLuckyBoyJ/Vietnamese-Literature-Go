@@ -2,15 +2,29 @@ import React, { useState } from "react";
 import './LoginView.css'
 import {Grid, TextField} from "@material-ui/core";
 import Header from "../Header";
+import LoginDataManager from "./LoginDataManager";
 
 const LoginView = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dataManager = new LoginDataManager();
     const [isSignUp, setIsSignUp] = useState(false);
+
+    let handleLoginSuccess = (posts) => {
+        alert('Login success!!!')
+    }
+
+    let handleLoginFailure = (error) => {
+        alert(error)
+    }
+
+    let handleLogin = () => {
+        dataManager.getPosts(username, password, handleLoginSuccess, handleLoginFailure)
+    }
+
     if (isSignUp) {
         return (
             <div className="login-view">
-                <Header/>
                 <div className="background-image-field"> </div>
                 <div className="login-field">
                     <div className="app-logo">Vietnam Literature <span className="logo-light">Go!</span> </div>
@@ -48,9 +62,9 @@ const LoginView = () => {
                     <div className="app-logo">Vietnam Literature <span className="logo-light">Go!</span> </div>
                     <div className="app-slogan">Kiến thức mới nhanh, gọn, dễ nhớ</div>
                     <div className="login-box">
-                        <input type="text" placeholder="Tài khoản hoặc email"/>
-                        <input type="password" placeholder="Mật khẩu"/>
-                        <div className="button"> Đăng nhập </div>
+                        <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Tài khoản hoặc email"/>
+                        <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Mật khẩu"/>
+                        <div className="button" onClick={handleLogin}> Đăng nhập </div>
                         <div className="more-option">
                             <div>Quên mật khẩu</div>
                             <div onClick={() => {setIsSignUp(true)}}>Đăng kí tài khoản mới</div>

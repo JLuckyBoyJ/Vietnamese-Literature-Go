@@ -8,11 +8,11 @@ import lombok.Data;
 public class ResponseListForm <T>{
     private Integer code;
     private String message;
-    private List<T> data;
+    private List<T> datas;
 
     public ResponseListForm(Integer code, String message, List<T> data) {
         this.code = code;
         this.message = message;
-        this.data = data;
+        this.datas = data;
     }
 }

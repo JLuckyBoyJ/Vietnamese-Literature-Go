@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
   <help_text>// Uncomment the following line to change the fontsize and font:
-fontsize=11
+fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
 
 
@@ -28,7 +28,7 @@ fontsize=11
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>297</x>
+      <x>220</x>
       <y>132</y>
       <w>143</w>
       <h>176</h>
@@ -51,7 +51,7 @@ can_update_data: String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
+      <x>517</x>
       <y>0</y>
       <w>121</w>
       <h>110</h>
@@ -69,7 +69,7 @@ place: String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>583</x>
+      <x>506</x>
       <y>165</y>
       <w>132</w>
       <h>132</h>
@@ -89,7 +89,7 @@ target_id: FK
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>528</x>
+      <x>451</x>
       <y>22</y>
       <w>88</w>
       <h>220</h>
@@ -100,7 +100,7 @@ target_id: FK
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>847</x>
+      <x>770</x>
       <y>143</y>
       <w>110</w>
       <h>66</h>
@@ -116,7 +116,7 @@ category_name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
+      <x>352</x>
       <y>154</y>
       <w>176</w>
       <h>99</h>
@@ -127,7 +127,7 @@ category_name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>704</x>
+      <x>627</x>
       <y>165</y>
       <w>165</w>
       <h>99</h>
@@ -138,7 +138,7 @@ category_name
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>297</x>
+      <x>220</x>
       <y>319</y>
       <w>143</w>
       <h>165</h>
@@ -161,7 +161,7 @@ image_link: String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>297</x>
+      <x>220</x>
       <y>506</y>
       <w>143</w>
       <h>121</h>
@@ -180,7 +180,7 @@ literaly_plot: String
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
+      <x>352</x>
       <y>264</y>
       <w>176</w>
       <h>110</h>
@@ -191,7 +191,7 @@ literaly_plot: String
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
+      <x>352</x>
       <y>264</y>
       <w>176</w>
       <h>297</h>
@@ -202,7 +202,7 @@ literaly_plot: String
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>935</x>
+      <x>858</x>
       <y>517</y>
       <w>121</w>
       <h>77</h>
@@ -219,7 +219,7 @@ number_of_quiz: Int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>583</x>
+      <x>506</x>
       <y>517</y>
       <w>154</w>
       <h>165</h>
@@ -241,7 +241,7 @@ fact_id: FK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>726</x>
+      <x>649</x>
       <y>539</y>
       <w>231</w>
       <h>143</h>
@@ -252,7 +252,7 @@ fact_id: FK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>583</x>
+      <x>506</x>
       <y>319</y>
       <w>110</w>
       <h>77</h>
@@ -268,7 +268,7 @@ quiz_id: FK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>264</x>
+      <x>187</x>
       <y>154</y>
       <w>341</w>
       <h>517</h>
@@ -279,7 +279,7 @@ quiz_id: FK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>682</x>
+      <x>605</x>
       <y>374</y>
       <w>110</w>
       <h>198</h>
@@ -290,7 +290,7 @@ quiz_id: FK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>583</x>
+      <x>506</x>
       <y>418</y>
       <w>110</w>
       <h>77</h>
@@ -306,7 +306,7 @@ achivement_id: FK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>264</x>
+      <x>187</x>
       <y>154</y>
       <w>341</w>
       <h>517</h>
@@ -317,7 +317,7 @@ achivement_id: FK</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
+      <x>462</x>
       <y>473</y>
       <w>418</w>
       <h>275</h>
