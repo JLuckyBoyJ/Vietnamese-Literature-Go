@@ -3,20 +3,13 @@ import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
-import ManageAccounts from '@mui/icons-material/ManageAccounts';
-import ClassIcon from '@mui/icons-material/Class';
-import CreateIcon from '@mui/icons-material/Create';
 
-import { Link } from "react-router-dom";
-export default function ProfileMenu() {
+const ProfileMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -93,3 +86,4 @@ export default function ProfileMenu() {
         </div>
     );
 }
+export default ProfileMenu;
