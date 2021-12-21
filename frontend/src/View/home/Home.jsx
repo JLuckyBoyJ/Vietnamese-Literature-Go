@@ -12,12 +12,7 @@ const Home = () => {
         <div>
             <Header/>
             <div>
-                <div className="leftHome">
-
-                </div>
-                <div>
-                    <Map/>
-                </div>
+                <Map/>
             </div>
         </div>
     );
