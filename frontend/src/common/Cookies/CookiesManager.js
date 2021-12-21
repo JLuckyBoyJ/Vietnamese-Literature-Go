@@ -4,9 +4,9 @@ class CookieManager{
         var cookiesName = name + "=";
         var cookies = document.cookie.split(';');
 
-        for(let cookie in cookies) {
+        for(let index in cookies) {
             //Remove whitespace before cookie string  
-            cookie.trim()
+            let cookie = cookies[index]
             if (cookie.indexOf(cookiesName) == 0) {
                 return cookie.substring(cookiesName.length, cookie.length);
             }

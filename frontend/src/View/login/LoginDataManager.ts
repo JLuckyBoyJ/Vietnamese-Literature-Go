@@ -1,9 +1,11 @@
 import UserApi from "../../common/Api/UserApi";
 import CookieManager from "../../common/Cookies/CookiesManager";
 import User from "../../Model/User";
+import LocationApi from '../../common/Api/LocationApi';
 
 export default class LoginDataManager {
   public userApi = UserApi.getInstance();
+  public locationApi = LocationApi.getInstance();
 
   public getPosts(
     username: string,
@@ -14,6 +16,7 @@ export default class LoginDataManager {
     let formData = new FormData()
     formData.append('username', username)
     formData.append('password', password)
+    
     this.userApi
       .login(formData)
       .then((response) => { 
