@@ -67,7 +67,7 @@ const ProfileMenu = () => {
                         minWidth: 200,
                     }}
                     onClick={() => {
-                        window.location.href = "/home";
+                        window.location.href = "/me";
                     }}
                 >
                     <PersonIcon/> Trang của tôi

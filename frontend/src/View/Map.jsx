@@ -1,6 +1,9 @@
-import React, {useCallback, useRef, useState} from 'react'
+import React, {useCallback, useEffect, useRef, useState} from 'react'
 import {GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api"
 import {formatRelative} from "date-fns"
+import {List, ListItem} from "@material-ui/core";
+import {useNavigate} from "react-router-dom";
+import LocationApi from "../common/Api/LocationApi";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -12,6 +15,7 @@ const center = {
     lng: 105.891780
 }
 export default function Map() {
+    const navigate = useNavigate();
     const {isLoaded, loadError} = useLoadScript({
             googleMapsApiKey: "AIzaSyCMcxCQYmEY_IEIrfpCu81zT94FDh1vvAs",
             libraries
@@ -19,6 +23,22 @@ export default function Map() {
     )
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
+    const [locationList, setLocationList] = useState([]);
+    const locationApi = new LocationApi();
+    const mapRef = useRef();
+    let handleLoginSuccess = (posts) => {
+        setLocationList(posts)
+        alert('Login success!!!')
+    }
+
+    let handleLoginFailure = (error) => {
+        alert(error)
+    }
+    useEffect(() => {
+        locationApi.getListLocation(handleLoginSuccess, handleLoginFailure);
+        console.log(locationList);
+    }, []);
+
     const onMapClick = useCallback(
         (event) => {
             setMarkers(current => [...current, {
@@ -28,7 +48,6 @@ export default function Map() {
             }])
         },
         []);
-    const mapRef = useRef();
     const onMapLoad = useCallback((map) => {
         mapRef.current = map;
     }, []);
@@ -38,6 +57,8 @@ export default function Map() {
     if (!isLoaded) {
         return "Loading maps";
     }
+
+
     return (
         <GoogleMap mapContainerStyle = {mapContainerStyle}
                    zoom = {8}
@@ -57,7 +78,27 @@ export default function Map() {
                 onCloseClick = {() => {setSelected(null);}}
             >
                 <div>
-                    Đây là một địa danh nào đó
+                    <div>
+                        <img
+                            src="../test.JPG"
+                        />
+                    </div>
+                    <div>
+                        <List>
+                            <ListItem>
+                                Văn Miếu Xích đằng
+                            </ListItem>
+                            <ListItem>
+                                <button
+                                    onClick={() => {
+                                        navigate('/location');
+                                    }}
+                                >
+                                    Tìm hiểu thêm
+                                </button>
+                            </ListItem>
+                        </List>
+                    </div>
                 </div>
             </InfoWindow>) : null}
         </GoogleMap>

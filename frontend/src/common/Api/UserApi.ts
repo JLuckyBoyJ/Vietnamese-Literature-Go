@@ -7,6 +7,7 @@ export default class UserApi extends HttpClient {
 
   public constructor() {
     super("http://localhost:8080/api");
+    // super("http://192.168.1.6:8080/api");
   }
 
   public static getInstance() {
