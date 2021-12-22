@@ -1,26 +1,58 @@
+@import url(../App.css);
+
 .Me {
   scroll-behavior: auto;
+  height: 100%;
+
   .Intro {
+    padding: 10px;
     display: flex;
-    margin-bottom: 4px;
-    .left {
-      position: sticky;
-      flex: 3;
-      display: flex;
-      align-self: center;
+    border-bottom: 0.5px solid var(--border-color);
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+      margin-right: 30px;
+      background-image: url(./Me_avatar.png);
+      border-radius: 75px;
     }
+
     .right {
-      flex: 8;
-      display: flex;
-      align-self: center;
+
+      div {
+        font-size: 1.2rem;
+      }
     }
   }
   .main {
+    height: 100%;
     display: flex;
+
     .left {
-      position: sticky;
-      flex: 3;
+      height: 100%;
+      flex: 80px;
+      border-right: 1px solid rgba($color: #444444, $alpha: 0.5);
+
+      .item {
+        height: 40px;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 40px;
+      }
+
+      .chosen-item {
+        color: white;
+        background-color: var(--app-color);
+      }
+
+      .item:hover {
+        cursor: pointer;
+      }
+      
     }
+
     .right {
       flex: 8;
     }

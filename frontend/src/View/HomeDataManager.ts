@@ -1,5 +1,4 @@
 import LocationApi from '../common/Api/LocationApi'
-import User from "../Model/User";
 import Location from "../Model/Location";
 
 export default class HomeDataManager {
@@ -8,7 +7,6 @@ export default class HomeDataManager {
         success: (data: Location[]) => void,
         failure: (error: string) => void
     ) {
-        let formData = new FormData()
         this.locationApi
             .getListLocation()
             .then((response) => {

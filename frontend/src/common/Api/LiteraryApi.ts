@@ -1,6 +1,5 @@
 import ProtectedHttpClient from "../HttpClient/ProtectedHttpClient";
 import BaseResponse from '../BaseResponse';
-import Author from "../../Model/Author";
 import Literary from '../../Model/Literary';
 
 export default class LiteraryApi extends ProtectedHttpClient {
