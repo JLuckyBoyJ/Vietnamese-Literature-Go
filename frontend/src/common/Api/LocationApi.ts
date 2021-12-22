@@ -1,7 +1,6 @@
 import ProtectedHttpClient from "../HttpClient/ProtectedHttpClient";
 import BaseResponse from '../BaseResponse';
 import Location from "../../Model/Location";
-import User from "../../Model/User";
 import CookieManager from "../Cookies/CookiesManager";
 
 export default class LocationApi extends ProtectedHttpClient {
