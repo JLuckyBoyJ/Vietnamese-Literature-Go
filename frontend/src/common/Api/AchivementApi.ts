@@ -7,8 +7,8 @@ export default class AchivementApi extends ProtectedHttpClient {
   private static classInstance: AchivementApi;
 
   constructor() {
-    super("http://localhost:8080/api/achivement");
-    //super("http://192.168.1.6:8080/api/location");
+    // super("http://localhost:8080/api/achivement");
+    super("http://192.168.1.6:8080/api/achivement");
   }
 
   public static getInstance() {

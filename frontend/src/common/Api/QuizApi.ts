@@ -6,8 +6,8 @@ export default class QuizApi extends ProtectedHttpClient {
   private static classInstance: QuizApi;
 
   constructor() {
-    super("http://localhost:8080/api/quiz");
-    // super("http://192.168.1.6:8080/api/location");
+    // super("http://localhost:8080/api/quiz");
+    super("http://192.168.1.6:8080/api/location");
   }
 
   public static getInstance() {

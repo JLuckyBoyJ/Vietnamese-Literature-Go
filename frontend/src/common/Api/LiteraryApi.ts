@@ -6,8 +6,8 @@ export default class LiteraryApi extends ProtectedHttpClient {
   private static classInstance: LiteraryApi;
 
   constructor() {
-    super("http://localhost:8080/api/fact");
-    // super("http://192.168.1.6:8080/api/location");
+    // super("http://localhost:8080/api/fact");
+    super("http://192.168.1.6:8080/api/location");
   }
 
   public static getInstance() {

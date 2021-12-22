@@ -6,8 +6,8 @@ export default class AuthorApi extends ProtectedHttpClient {
   private static classInstance: AuthorApi;
 
   constructor() {
-    super("http://localhost:8080/api/fact");
-    // super("http://192.168.1.6:8080/api/location");
+    // super("http://localhost:8080/api/fact");
+    super("http://192.168.1.6:8080/api/location");
   }
 
   public static getInstance() {

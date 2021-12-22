@@ -16,7 +16,7 @@ export default function Artwork(props) {
             <div>
                 {props.description}
             </div>
-            <Divider/>
+            <br/>
         </div>
     );
 }
