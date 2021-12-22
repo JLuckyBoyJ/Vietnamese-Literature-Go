@@ -39,3 +39,10 @@ body,
     background-color: var(--button-color-selected);
     cursor: pointer;
 }
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

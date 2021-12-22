@@ -1,62 +1,50 @@
 .Header {
+  height: 50px;
   display: flex;
+  justify-content: space-between;
   background-color: var(--app-color);
-  img {
-    max-width: 200px;
-  }
-  box-shadow: 0 4px 8px 0 rgba(223, 218, 218, 0.2), 0 1px 20px 0 rgba(218, 209, 209, 0.19);
-  .HeaderContainer {
+  width: 100%;
+
+  .left-header {
+    padding-left: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-  }
-  .HeaderList {
-    display: flex;
 
-    ul {
-      margin: 0;
-      display: flex;
-      align-items: center;
-      li {
-        margin-left: 25px;
-        list-style: none;
+    .logo {
+      margin-right: 30px;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 50px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      span {
+        font-size: 2rem;
+        color: white;
       }
     }
+
+    input {
+      margin: 10px;
+      padding: 0 12px;
+      height: 33px;
+      line-height: 33px;
+      width: 300px;
+      outline: none;
+      border: none;
+      border-radius: 16.5px;
+    }
   }
-  #logo {
-    height: 80px;
+
+  .right-header {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    .profile {
+
+    }
   }
 }
-//.Header {
-//  //font-size: 2.1rem;
-//  background-color: var(--app-color);
-//  .LeftHeader {
-//    padding-left: 30px;
-//    display: inline-block;
-//    width: 50%;
-//    height: 100%;
-//    font-size: inherit;
-//    input {
-//      line-height: 38px;
-//    }
-//  }
-//  .mid {
-//    input {
-//      width: 100%;
-//      border-radius: 7px;
-//      border-color: var(--app-color);
-//      font-size: 1.5rem;
-//    }
-//    //padding-top: 5px;
-//  }
-//  .userName {
-//    font-size: 1.5rem;
-//    //padding-top: 7px;
-//  }
-//  .RightHeader {
-//    padding-top: 10px;
-//    display: inline-block;
-//    width: 50%;
-//    font-size: inherit;
-//  }
-//}

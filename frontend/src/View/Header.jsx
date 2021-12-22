@@ -8,7 +8,16 @@ import ProfileMenu from "./ProfileMenu";
 const Header = () => {
     return (
         <div className="Header">
-            <Container>
+            <div className='left-header'>
+                <div className='logo unselectable'>
+                    vl<span>GO!</span> 
+                </div>
+                <input type="text" placeholder='Hãy nhập địa điểm muốn tìm '/>
+            </div>
+            <div className='right-header'>
+                <ProfileMenu className='profile'/>
+            </div>
+            {/* <Container>
                 <div className="HeaderContainer">
                     <Link href="/">
                         <img
@@ -33,7 +42,7 @@ const Header = () => {
                         </ul>
                     </div>
                 </div>
-            </Container>
+            </Container> */}
         </div>
     );
 }
