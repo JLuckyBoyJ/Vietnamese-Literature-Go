@@ -105,8 +105,8 @@ public class FactController {
     }
 
     @GetMapping("/list")
-    public ResponseListForm<Fact> listFact(@RequestParam(required = false) Long locationId) {
-        List<FactDao> facts = factRepository.findAll();
+    public ResponseListForm<Fact> listFact(@RequestParam Long locationId) {
+        List<FactDao> facts = factRepository.findByLocationId(locationId);
         List<Fact> factResponse = new ArrayList<>();
 
         for (FactDao fact: facts) {
