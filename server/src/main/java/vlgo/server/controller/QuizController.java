@@ -78,7 +78,7 @@ public class QuizController {
         return new ResponseForm<>(1, "Success!!!", quizResult);
     }
 
-    @RequestMapping(value = "/saveCorrectAns")
+    @RequestMapping(value = "/saveCorrectAnswer")
     public ResponseForm<QuizResult> saveAnsToUser(@RequestParam Long quizId) {
         QuizDao quiz = quizRepository.findQuizById(quizId);
         if (quiz == null) {

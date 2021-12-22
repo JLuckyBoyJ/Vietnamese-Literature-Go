@@ -15,7 +15,7 @@ import lombok.Data;
 public class UserAchivementDao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_achivement_id", unique = true, nullable = false)
+    @Column(name = "user_achives_id", unique = true, nullable = false)
     private Long id;
 
     @Column(name = "user_id")
