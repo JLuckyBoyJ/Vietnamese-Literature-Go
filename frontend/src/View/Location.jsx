@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import Header from "./Header";
 import "./Location.scss"
 import {Avatar} from "@mui/material";
@@ -22,52 +22,47 @@ function Content(props) {
     const [authorList, setAuthorList] = useState([]);
     const [artworkList, setArtworkList] = useState([]);
     const [quizList, setQuizList] = useState([]);
-    let handleGetFactSuccess = (posts) => {
-        const temp = [];
-        for (let i in posts) {
-            temp.push(posts[i].content);
-        }
-        setFactList(temp);
-    }
-    let handleGetAuthorSuccess = (posts) => {
-        const temp = [];
-        for (let i in posts) {
-            if(posts[i].category.id == 1) {
-                temp.push(posts[i].target);
+
+    let handleGetDataSuccess = (datas) => {
+        const facts = [];
+        const author = [];
+        const artWorks = [];
+        const quizs = [];
+
+        for (let i in datas) {
+            facts.push(datas[i].content);
+
+            if(datas[i].category.id == 1) {
+                author.push(datas[i].target);
+            } else {
+                artWorks.push(datas[i].target)
+            }
+
+            for (let j in datas[i].quiz) {
+                quizs.push(datas[i].quiz[j]);
             }
         }
-        setAuthorList(temp);
-    }
-    let handleGetArtworkSuccess = (posts) => {
-        const temp = [];
-        for (let i in posts) {
-            if(posts[i].category.id == 2) {
-                temp.push(posts[i].target);
-            }
-        }
-        setArtworkList(temp);
-        
-    }
-    let handleGetQuizSuccess = (posts) => {
-       const temp = [];
-       for (let i in posts) {
-           for (let j in posts[i].quiz) {
-               temp.push(posts[i].quiz[j]);
-           }
-       }
-       setQuizList(temp);
+
+        setFactList(facts);
+        setAuthorList(author);
+        setArtworkList(artWorks);
+        setQuizList(quizs)
     }
 
     let handleFailure = (error) => {
         alert(error);
     }
+
+    useEffect(() => {
+        factDataManager.getListFact(id, handleGetDataSuccess, handleFailure);
+    }, []);
+
     if (props.type == 0) {
         return(
             <Intro/>
         );
     }
     else if (props.type == 1) {
-        factDataManager.getListFact(id, handleGetFactSuccess, handleFailure);
         return(
             <div>
                 {factList.map(
@@ -80,7 +75,6 @@ function Content(props) {
         );
     }
     else if (props.type == 2) {
-        factDataManager.getListFact(id, handleGetAuthorSuccess, handleFailure);
         return(
             <div>
                 {authorList.map(
@@ -99,7 +93,6 @@ function Content(props) {
         );
     }
     else if (props.type == 3) {
-        factDataManager.getListFact(id, handleGetArtworkSuccess, handleFailure);
         return(
             <div>
                 {artworkList.map(
@@ -115,24 +108,6 @@ function Content(props) {
             </div>
         );
     } else {
-        // factDataManager.getListFact(id, handleGetAuthorSuccess, handleFailure);
-        // return(
-        //     <div>
-        //         {authorList.map(
-        //             author => 
-        //             <Author
-        //                 name = {author.name}
-        //                 penName = {author.penName}
-        //                 yearOfBirth = {author.yearOfBirth}
-        //                 placeOfBirth = {author.placeOfBirth}
-        //                 yearPassed = {author.yearPassed}
-        //                 description = {author.description}
-        //                 imageLink = {author.imageLink}
-        //             />
-        //         )}
-        //     </div>
-        // );
-        factDataManager.getListFact(id, handleGetQuizSuccess, handleFailure);
         return(
             <div>
                 {quizList.map(
@@ -159,8 +134,8 @@ export default function Location() {
     const [value, setValue] = useState(1);
     const [locationName, setLocationName] = useState();
     const factDataManager = new FactDataManager();
-    let handleGetLocationNameSuccess = (posts) => {
-        setLocationName(posts[0].location.place);
+    let handleGetLocationNameSuccess = (datas) => {
+        setLocationName(datas[0].location.place);
     }
     let handleFailure = (error) => {
         alert(error);
@@ -184,13 +159,6 @@ export default function Location() {
             </div>
             <div className="main">
                 <div className="left">
-                    {/* <ListItem button onClick={() => {
-                        setValue(0);
-                    }}>
-                        <Typography variant="h5">
-                            Giới thiệu
-                        </Typography>
-                    </ListItem> */}
                     <ListItem button onClick={() => {
                         setValue(1);
                     }}>
