@@ -21,5 +21,5 @@ export default class LocationApi extends ProtectedHttpClient {
     return this.instance.get<BaseResponse<TheFact>, BaseResponse<TheFact>>(`/list?locationId=${locationId}`);
   }
 
-
+  
 }
