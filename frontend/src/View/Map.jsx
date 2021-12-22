@@ -4,6 +4,7 @@ import {formatRelative} from "date-fns"
 import {List, ListItem} from "@material-ui/core";
 import {useNavigate} from "react-router-dom";
 import LocationApi from "../common/Api/LocationApi";
+import HomeDataManager from "./HomeDataManager";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -24,21 +25,21 @@ export default function Map() {
     const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
     const [locationList, setLocationList] = useState([]);
-    const locationApi = new LocationApi();
     const mapRef = useRef();
+    const dataManager = new HomeDataManager();
     let handleLoginSuccess = (posts) => {
-        setLocationList(posts)
-        alert('Login success!!!')
+        const temp = [];
+        for (let i in posts) {
+            temp.push(posts[i]);
+        }
+        setLocationList(temp);
     }
 
     let handleLoginFailure = (error) => {
         alert(error)
     }
     useEffect(() => {
-        locationApi.getListLocation().then(response => {
-            console.log(response);
-        })
-        console.log(locationList);
+        dataManager.getLocationList(handleLoginSuccess, handleLoginFailure);
     }, []);
 
     const onMapClick = useCallback(
@@ -68,36 +69,46 @@ export default function Map() {
                    onClick = {onMapClick}
                    onLoad = {onMapLoad}
         >
-            {markers.map(marker =>
+            {/* {markers.map(marker =>
                 <Marker key={marker.time.toISOString()}
                         position ={{lat:marker.lat, lng:marker.lng}}
                         onClick={() => {
                             setSelected(marker);
                         }}
-                /> )}
+                /> )} */}
+            {locationList.map(
+                location => 
+                <Marker key = {location.id}
+                        position={{lat:location.lat, lng:location.lon}}
+                        onClick={() => {
+                            setSelected(location);
+                        }}
+                />
+            )
+            }    
             {selected ? (<InfoWindow
-                position = {{lat: selected.lat, lng: selected.lng}}
+                position = {{lat: selected.lat, lng: selected.lon}}
                 onCloseClick = {() => {setSelected(null);}}
             >
                 <div>
-                    <div>
+                    {/* <div>
                         <img
                             src="../test.JPG"
                         />
-                    </div>
+                    </div> */}
                     <div>
                         <List>
                             <ListItem>
-                                Văn Miếu Xích đằng
+                            {selected.place}
                             </ListItem>
                             <ListItem>
-                                <button
+                                <div className="button"
                                     onClick={() => {
                                         navigate('/location');
                                     }}
                                 >
-                                    Tìm hiểu thêm
-                                </button>
+                                    <b>Tìm hiểu thêm </b>
+                                </div>
                             </ListItem>
                         </List>
                     </div>
