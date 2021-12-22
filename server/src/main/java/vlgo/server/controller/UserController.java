@@ -15,6 +15,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -71,16 +72,22 @@ public class UserController {
     @PostMapping(value="/login")
     public LoginResponse<User> login(@RequestParam("username") String username, 
                                     @RequestParam("password") String password) {
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(username, password)
-        );
+        
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(username, password)
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String jwt = jwtProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
+            UserDao user = userRepository.getUserByUsername(username);
+            User userResponse = new User(user);
+            return new LoginResponse<>(1, "Success!", userResponse, jwt);
 
-        UserDao user = userRepository.getUserByUsername(username);
-        User userResponse = new User(user);
-        return new LoginResponse<>(1, "Success!", userResponse, jwt);
+        } catch (BadCredentialsException e) {
+            return new LoginResponse<>(0, "Wrong username or password!", null, null);
+        }
+        
     }
     
 }
