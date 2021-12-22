@@ -1,5 +1,6 @@
 package vlgo.server.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import vlgo.server.dao.AuthorDao;
 import vlgo.server.dao.LiteraryDao;
+import vlgo.server.dto.Literary;
+import vlgo.server.repository.AuthorRepository;
 import vlgo.server.repository.LiteraryRepository;
 import vlgo.server.response.ResponseForm;
 import vlgo.server.response.ResponseListForm;
@@ -21,6 +25,9 @@ public class LiteraryController {
 
     @Autowired
     LiteraryRepository literaryRepository;
+
+    @Autowired
+    AuthorRepository authorRepository;
 
     @PostMapping(value = "/create")
     public ResponseForm<LiteraryDao> addToLibrary(@RequestParam String name, 
@@ -39,8 +46,16 @@ public class LiteraryController {
     }
 
     @GetMapping(value = "/list")
-    public ResponseListForm<LiteraryDao> listLibrary() {
+    public ResponseListForm<Literary> listLibrary() {
         List<LiteraryDao> literaries = literaryRepository.findAll();
-        return new ResponseListForm<>(1, "Success", literaries);
+        List<Literary> response = new ArrayList<>();
+
+        for (LiteraryDao literary: literaries) {
+            AuthorDao author = authorRepository.findById(literary.getAuthorId()).orElse(null);
+            Literary l = new Literary(literary, author);
+            response.add(l);
+        }
+        
+        return new ResponseListForm<>(1, "Success", response);
     }
 }

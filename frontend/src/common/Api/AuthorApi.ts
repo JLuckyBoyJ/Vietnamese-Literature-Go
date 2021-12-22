@@ -1,9 +1,9 @@
 import ProtectedHttpClient from "../HttpClient/ProtectedHttpClient";
 import BaseResponse from '../BaseResponse';
-import TheFact from '../../Model/TheFact';
+import Author from "../../Model/Author";
 
-export default class FactApi extends ProtectedHttpClient {
-  private static classInstance: FactApi;
+export default class AuthorApi extends ProtectedHttpClient {
+  private static classInstance: AuthorApi;
 
   constructor() {
     super("http://localhost:8080/api/fact");
@@ -12,12 +12,12 @@ export default class FactApi extends ProtectedHttpClient {
 
   public static getInstance() {
     if (!this.classInstance) {
-      this.classInstance = new FactApi();
+      this.classInstance = new AuthorApi();
     }
     return this.classInstance;
   }
 
-  public getListFact = (locationId: number) => {
-    return this.instance.get<BaseResponse<TheFact>, BaseResponse<TheFact>>(`/list?locationId=${locationId}`);
+  public getListAuthor = () => {
+    return this.instance.get<BaseResponse<Author>, BaseResponse<Author>>(`/list`);
   }
 }
