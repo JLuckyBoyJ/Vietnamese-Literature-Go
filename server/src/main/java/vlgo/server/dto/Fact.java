@@ -18,5 +18,6 @@ public class Fact <T> {
     private CategoryDao category;
     private User user;
     private T target;
+    private String content;
     private List<QuizDao> quiz;
 }

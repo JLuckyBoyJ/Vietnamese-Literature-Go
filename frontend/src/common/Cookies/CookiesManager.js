@@ -7,7 +7,7 @@ class CookieManager{
         for(let index in cookies) {
             //Remove whitespace before cookie string  
             let cookie = cookies[index]
-            if (cookie.indexOf(cookiesName) == 0) {
+            if (cookie.indexOf(cookiesName) === 0) {
                 return cookie.substring(cookiesName.length, cookie.length);
             }
         }
@@ -15,7 +15,7 @@ class CookieManager{
         return "";
     }
 
-    static saveCookie(name, value, expiredDay) {
+    static saveCookie(name, value, expiredDay = 7) {
         var date = new Date()
         date.setTime(date.getTime() + expiredDay*24*60*60*1000) 
 

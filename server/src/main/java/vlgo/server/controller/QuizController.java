@@ -42,6 +42,11 @@ public class QuizController {
     @Autowired
     UserAchivementRepository userAchivementRepository;
 
+    @PostMapping(value = "/create")
+    public ResponseForm<QuizDao> createQuiz() {
+        return new ResponseForm<QuizDao>(1, "message", null);
+    }
+
     @PostMapping(value="/submitAnswer")
     public ResponseForm<QuizResult> submitAnsweResponseForm(@RequestParam Long quizId, @RequestParam Character answer) {
         QuizDao quiz = quizRepository.findQuizById(quizId);
