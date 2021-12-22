@@ -7,8 +7,8 @@ export default class LocationApi extends ProtectedHttpClient {
   private static classInstance: LocationApi;
 
   constructor() {
-    super("http://localhost:8080/api/location");
-    // super("http://192.168.1.6:8080/api/location");
+    // super("http://localhost:8080/api/location");
+    super("http://192.168.1.6:8080/api/location");
   }
 
   public static getInstance() {

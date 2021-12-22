@@ -19,10 +19,10 @@ const Header = () => {
             </div>
             {/* <Container>
                 <div className="HeaderContainer">
-                    <Link href="/">
+                    <Link href="/home">
                         <img
                             id ="logo"
-                            src=""
+                            src="../../src/View/login/login_image.svg"
                             alt="logo"
                         />
                     </Link>
