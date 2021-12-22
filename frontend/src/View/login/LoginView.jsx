@@ -18,8 +18,20 @@ const LoginView = () => {
         alert(error)
     }
 
-    let handleLogin = () => {
-        dataManager.getPosts(username, password, handleLoginSuccess, handleLoginFailure)
+    let loginUser = () => {
+        dataManager.loginUser(username, password, handleLoginSuccess, handleLoginFailure)
+    }
+
+    let handleRegisterSuccess = () => {
+
+    }
+
+    let handleRegisterFailure = () => {
+        
+    }
+
+    let registerUser = () => {
+
     }
 
     if (isSignUp) {
@@ -64,7 +76,7 @@ const LoginView = () => {
                     <div className="login-box">
                         <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Tài khoản hoặc email"/>
                         <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Mật khẩu"/>
-                        <div className="button" onClick={handleLogin}> Đăng nhập </div>
+                        <div className="button" onClick={loginUser}> Đăng nhập </div>
                         <div className="more-option">
                             <div>Quên mật khẩu</div>
                             <div onClick={() => {setIsSignUp(true)}}>Đăng kí tài khoản mới</div>

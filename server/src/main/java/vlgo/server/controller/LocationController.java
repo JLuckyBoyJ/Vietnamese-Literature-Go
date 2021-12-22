@@ -25,12 +25,13 @@ public class LocationController {
     @PostMapping(value = "/create")
     public ResponseForm<LocationDao> createLocation(@RequestParam("lat") Float lat,
                                                     @RequestParam("long") Float lon,
-                                                    @RequestParam("name") String name) {
+                                                    @RequestParam("name") String name,
+                                                    @RequestParam(value =  "image", required = false) String image) {
         if (lat == null || lon == null || !StringUtils.hasText(name)) {
             return new ResponseForm<>(0, "Missing value!!!", null);
         }
 
-        LocationDao newLocation = new LocationDao(lat, lon, name);
+        LocationDao newLocation = new LocationDao(lat, lon, name, image);
         //If cordinate doesn't exist, create
         if (Boolean.TRUE.equals(!locationRepository.existPlace(lat, lon))){
             locationRepository.save(newLocation);

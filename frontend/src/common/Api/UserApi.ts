@@ -21,4 +21,8 @@ export default class UserApi extends HttpClient {
     return this.instance.post<LoginResponse<User>, LoginResponse<User>>('/login', formData);
   };
 
+  public register = (formData: FormData) => {
+    return this.instance.post<LoginResponse<User>, LoginResponse<User>>('/register', formData);
+  }
+
 }

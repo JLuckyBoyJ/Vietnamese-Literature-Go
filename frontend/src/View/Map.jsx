@@ -35,7 +35,9 @@ export default function Map() {
         alert(error)
     }
     useEffect(() => {
-        locationApi.getListLocation(handleLoginSuccess, handleLoginFailure);
+        locationApi.getListLocation().then(response => {
+            console.log(response);
+        })
         console.log(locationList);
     }, []);
 

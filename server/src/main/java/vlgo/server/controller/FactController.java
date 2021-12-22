@@ -1,6 +1,5 @@
 package vlgo.server.controller;
 
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +89,7 @@ public class FactController {
                 return new ResponseForm<>(0, "Author doesn't exist!!!", null);
             }
 
-            Fact<AuthorDao> fact = new Fact<>(newFact.getId(), location, category, user, author, quiz);
+            Fact<AuthorDao> fact = new Fact<>(newFact.getId(), location, category, user, author, content, quiz);
             return new ResponseForm<>(1, "Success!!!", fact);
         } else {
             LiteraryDao literary = literaryRepository.findById(targetId).orElse(null);
@@ -99,7 +98,7 @@ public class FactController {
                 return new ResponseForm<>(0, "Literary doesn't exist!!!", null);
             }
 
-            Fact<LiteraryDao> fact = new Fact<>(newFact.getId(), location, category, user, literary, quiz);
+            Fact<LiteraryDao> fact = new Fact<>(newFact.getId(), location, category, user, literary, content, quiz);
             return new ResponseForm<>(1, "Success!!!", fact);
         }
 
@@ -116,6 +115,7 @@ public class FactController {
             User user = new User(creator);
             CategoryDao category = categoryRepository.findById(fact.getCategoryId()).orElse(null);
             List<QuizDao> quiz = quizRepository.findByFactId(fact.getId());
+            String content = fact.getContent();
             
             if(category == null) {
                 return new ResponseListForm<>(0, "Category doesn't exist", null);
@@ -123,11 +123,11 @@ public class FactController {
 
             if (category.getId() == 1) { //Tasc gia
                 AuthorDao author = authorRepository.findById(fact.getTargetId()).orElse(null);
-                Fact<AuthorDao> f = new Fact<>(fact.getId(), location, category, user, author, quiz);
+                Fact<AuthorDao> f = new Fact<>(fact.getId(), location, category, user, author, content, quiz);
                 factResponse.add(f);
             } else {
                 LiteraryDao literary = literaryRepository.findById(fact.getTargetId()).orElse(null);
-                Fact<LiteraryDao> f = new Fact<>(fact.getId(), location, category, user, literary, quiz);
+                Fact<LiteraryDao> f = new Fact<>(fact.getId(), location, category, user, literary, content, quiz);
                 factResponse.add(f);
             }
 
