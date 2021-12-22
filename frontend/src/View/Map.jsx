@@ -104,7 +104,7 @@ export default function Map() {
                             <ListItem>
                                 <div className="button"
                                     onClick={() => {
-                                        navigate('/location');
+                                        navigate(`/location/${selected.id}`);
                                     }}
                                 >
                                     <b>Tìm hiểu thêm </b>

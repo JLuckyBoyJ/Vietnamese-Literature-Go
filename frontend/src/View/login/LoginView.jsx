@@ -3,15 +3,17 @@ import './LoginView.css'
 import {Grid, TextField} from "@material-ui/core";
 import Header from "../Header";
 import LoginDataManager from "./LoginDataManager";
+import { useNavigate } from "react-router-dom";
 
 const LoginView = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dataManager = new LoginDataManager();
     const [isSignUp, setIsSignUp] = useState(false);
-
+    const navigate = useNavigate();
     let handleLoginSuccess = (posts) => {
         alert('Login success!!!')
+        navigate("/home");
     }
 
     let handleLoginFailure = (error) => {
